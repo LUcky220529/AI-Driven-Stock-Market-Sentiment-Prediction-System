@@ -1,4 +1,4 @@
-# AI-Driven-Stock-Market-Sentiment-Prediction-System
+
 # 📈 AI-Driven Stock Market Sentiment & Prediction System
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -25,15 +25,7 @@ It automatically fetches historical data and real-time news, runs them through t
 * **📊 Interactive Dashboard:** A React.js frontend featuring beautiful Recharts (Candlestick and Line graphs) and a dynamic Sentiment Gauge.
 * **🗄️ Smart Caching:** Uses MongoDB to cache recent searches, preventing API rate limits and instantly loading popular stock queries.
 
----
 
-## 📸 Screenshots
-
-*(Add your actual screenshots here once your UI is built)*
-
-| Main Dashboard | Sentiment Analysis Panel |
-| :---: | :---: |
-| <img src="https://via.placeholder.com/400x250?text=Stock+Chart+Dashboard" alt="Dashboard" width="400"/> | <img src="https://via.placeholder.com/400x250?text=FinBERT+Sentiment+Gauge" alt="Sentiment" width="400"/> |
 
 ---
 
