@@ -31,7 +31,17 @@ It automatically fetches historical data and real-time news, runs them through t
 ## Screenshot
 
 ### Dashboard
+
 <img width="1401" height="828" alt="image" src="https://github.com/user-attachments/assets/d0018bc9-4ce3-4d34-b999-7853b3d5418a" />
+
+### Features
+
+<img width="1818" height="833" alt="image" src="https://github.com/user-attachments/assets/0147060a-e41c-4cc9-97a1-21d5ede661a7" />
+
+### Let's Start
+
+<img width="1856" height="871" alt="image" src="https://github.com/user-attachments/assets/c16c231e-7cad-4482-88e0-45ea01c9829a" />
+
 
 ## 🏗️ System Architecture
 
