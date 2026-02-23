@@ -28,8 +28,10 @@ It automatically fetches historical data and real-time news, runs them through t
 
 
 ---
-screenshot 
-<img width="1901" height="828" alt="image" src="https://github.com/user-attachments/assets/d0018bc9-4ce3-4d34-b999-7853b3d5418a" />
+## Screenshot
+
+### Dashboard
+<img width="1401" height="828" alt="image" src="https://github.com/user-attachments/assets/d0018bc9-4ce3-4d34-b999-7853b3d5418a" />
 
 ## 🏗️ System Architecture
 
