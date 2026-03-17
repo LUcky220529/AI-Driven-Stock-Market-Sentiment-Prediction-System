@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # --- INITIALIZATION ---
-NEWS_API_KEY = "b2a51cb1ced04966b4729fa7c556c6b6" # Paste your key here
+NEWS_API_KEY = "" # Paste your API key 
 print("Loading FinBERT Model...")
 sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")
 
