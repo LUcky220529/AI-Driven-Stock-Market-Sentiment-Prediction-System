@@ -37,6 +37,6 @@ model.add(Dense(1))
 model.compile(optimizer='adam', loss='mean_squared_error')
 model.fit(x_train, y_train, batch_size=32, epochs=10)
 
-print("Saving model...")
+print("Saving model..")
 model.save('lstm_model.h5')
 print("Training Complete! Model saved as lstm_model.h5")
