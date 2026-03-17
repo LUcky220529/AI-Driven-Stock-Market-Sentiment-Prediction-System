@@ -66,7 +66,7 @@ const App = () => {
               placeholder="Enter Stock Ticker (e.g., AAPL, TSLA)"
               className="w-full bg-gray-800 border border-gray-700 text-white px-5 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 pl-12 shadow-lg"
               value={ticker}
-              onChange={(e) => setTicker(e.target.value)}
+              onChange={(e) => setTicker(e.target.value.toUpperCase()}
             />
             <Search className="absolute left-4 top-4 text-gray-500 h-5 w-5" />
             <button 
