@@ -146,6 +146,14 @@ const App = () => {
           </div>
         )}
       </main>
+      <footer className="border-t border-gray-800 bg-gray-900/50 backdrop-blur-md mt-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+          <p className="text-gray-400 text-sm">
+             NOTICE: Not Financial Advice.<br></br> Do not trade based on these predictions.<br></br>This tool is Group Project(educational Purpose).
+          </p>
+        </div>
+      </footer>
+      
     </div>
   );
 };
