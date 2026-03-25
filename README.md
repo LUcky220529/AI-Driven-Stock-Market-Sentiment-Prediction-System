@@ -26,6 +26,13 @@ It automatically fetches the historical data and real-time news, runs them throu
 * **🗄️ Smart Caching:** Uses MongoDB to cache recent searches, preventing API rate limits and instantly loading popular stock queries.
 
 
+## 🧠 Architecture & Tech Stack
+This project leverages a modern, decoupled architecture:
+* **Data Ingestion:** `yfinance`, web scraping for financial news.
+* **Time-Series Forecasting:** LSTM (Long Short-Term Memory) neural networks.
+* **Sentiment Analysis:** FinBERT (pre-trained NLP model for the financial domain).
+* **Backend / API:** FastAPI for serving predictions and reports.
+* **Frontend:** React (for visualizing charts and AI summaries).
 
 ---
 
