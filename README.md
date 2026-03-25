@@ -50,3 +50,14 @@ graph TD
     Backend -->|Caches Data| DB[(MongoDB)]
     Backend -->|Returns JSON| Frontend
     Frontend -->|Updates Charts| User
+```
+## 💻 Next Goal
+### Login Authentication Dashboard 
+* When user enter , it requires authorised credentials from users
+### Use of LLM 
+*  It can read a financial report and write a paragraph explaining exactly why the market reacted the way it did.
+
+
+
+
+
