@@ -58,6 +58,72 @@ graph TD
     Backend -->|Returns JSON| Frontend
     Frontend -->|Updates Charts| User
 ```
+
+Prerequisites
+-------------
+- Python 3.9+ (3.10 recommended)
+- Node.js 18+ and npm/yarn (for frontend)
+- Optional: GPU (CUDA) for faster transformer/TensorFlow inference/training
+- Git LFS if you plan to track the trained model file(s) in the repository
+
+Recommended Python packages (also available as `requirements.txt`):
+- fastapi
+- uvicorn[standard]
+- transformers
+- torch (or torch-cpu)
+- tensorflow (2.10+ recommended)
+- yfinance
+- requests
+- numpy
+- pandas
+- scikit-learn
+- joblib
+- python-dotenv
+- pymongo (if you enable caching/database)
+- aiohttp (optional: async news fetches)
+
+
+Quickstart — Backend
+--------------------
+1. Create a virtual environment and install dependencies:
+   - python -m venv venv
+   - source venv/bin/activate   (Windows: venv\Scripts\activate)
+   - pip install -r requirements.txt
+
+2. Create a `.env` file in AI Stock/backend/ (see `.env.example`) with:
+   - NEWS_API_KEY=your_newsapi_key
+   - HF_TOKEN=your_huggingface_token (optional)
+   - MONGODB_URI=your_mongo_uri (optional)
+
+3. (Optional) Train the LSTM model or place pretrained files:
+   - python train_lstm.py
+   - This will create `lstm_model.h5` and `scaler.gz` in the backend folder.
+
+4. Run the backend:
+   - uvicorn "main:app" --reload --host 0.0.0.0 --port 8000
+  
+
+Quickstart — Frontend
+---------------------
+1. Go to AI Stock/ai-stock-predictor/frontend
+2. Install:
+   - npm install
+3. Set the backend URL in frontend environment file (e.g., `.env.local`):
+   - VITE_API_BASE_URL=http://localhost:8000
+4. Run dev server:
+   - npm run dev
+5. Build for production:
+   - npm run build
+   - npm run preview
+
+Training the LSTM model (train_lstm.py)
+--------------------------------------
+- The script trains a 2-layer LSTM on historical AAPL close prices from 2014-01-01 to 2024-01-01.
+- It saves:
+  - `scaler.gz` — MinMaxScaler used for scaling close prices
+  - `lstm_model.h5` — trained Keras model
+
+
 ## 💻 Next Goal
 ### Login Authentication Dashboard 
 * When user enter , it requires authorised credentials from users
