@@ -40,6 +40,17 @@ This project leverages a modern, decoupled architecture:
 
 GitHub natively renders the flowchart below. It shows exactly how data flows from the user to the AI models and back.
 
+### 📊 System Architecture & Data Flow
+
+This flowchart illustrates the complete lifecycle of a single user request, demonstrating how our hybrid architecture processes concurrent API calls and Machine Learning tasks:
+
+* **1. User Trigger:** The cycle begins when a user enters a stock ticker (e.g., `AAPL`) into the React.js dashboard.
+* **2. Concurrent Data Ingestion:** The FastAPI orchestrator simultaneously fetches numerical historical data (via `yfinance`) and qualitative live news headlines (via `NewsAPI`).
+* **3. Dual AI Processing:** * *Text Data* is routed to the **FinBERT** transformer model to calculate a market sentiment score.
+  * *Numerical Data* is routed to the custom **LSTM** neural network to forecast the 61st-day price.
+* **4. Unified Aggregation:** The backend combines the outputs from both AI models into a single, clean JSON payload.
+* **5. UI Visualization:** The React frontend receives the JSON and dynamically updates the Recharts graphs and sentiment cards in real-time.
+
 ```mermaid
 graph TD
     User[User Searches Stock] --> Frontend[React.js Dashboard]
