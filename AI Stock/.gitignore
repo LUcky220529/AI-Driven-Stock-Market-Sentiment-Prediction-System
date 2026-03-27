@@ -1,0 +1,15 @@
+# Python & AI
+backend/venv/
+backend/__pycache__/
+*.h5
+*.gz
+*.csv
+
+# React / Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# API Keys and Secrets
+.env
+backend/.env
