@@ -58,6 +58,17 @@ graph TD
     Backend -->|Returns JSON| Frontend
     Frontend -->|Updates Charts| User
 ```
+## 🏗️ Tech Stack
+
+| Component | Technology |
+| :--- | :--- |
+| **Data Ingestion** | `yfinance`, web scraping for financial news |
+| **Time-Series Forecasting** | LSTM (TensorFlow/Keras) |
+| **Sentiment Analysis** | FinBERT (transformer-based NLP) |
+| **Backend/API** | FastAPI + Uvicorn |
+| **Frontend** | React 18.x + Vite |
+| **Database** | MongoDB (caching) |
+| **Language** | Python 3.9+, JavaScript/Node.js |
 
 Prerequisites
 -------------
