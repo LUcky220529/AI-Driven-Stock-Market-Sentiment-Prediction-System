@@ -48,7 +48,7 @@ def verify_password(plain_password, hashed_password):
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-NEWS_API_KEY = "b2a51cb1ced04966b4729fa7c556c6b6" 
+NEWS_API_KEY = "" # you live news API from NEWS API org. 
 
 print("Loading FinBERT Model...")
 sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")
