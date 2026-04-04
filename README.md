@@ -140,6 +140,7 @@ Quickstart — Frontend
 1. Go to AI Stock/ai-stock-predictor/frontend
 2. Install:
    - npm install
+   - npm install axios recharts lucide-react
 3. Set the backend URL in frontend environment file (e.g., `.env.local`):
    - VITE_API_BASE_URL=http://localhost:8000
 4. Run dev server:
