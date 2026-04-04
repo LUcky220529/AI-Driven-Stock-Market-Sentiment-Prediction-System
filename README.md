@@ -145,9 +145,7 @@ Quickstart — Frontend
    - VITE_API_BASE_URL=http://localhost:8000
 4. Run dev server:
    - npm run dev
-5. Build for production:
-   - npm run build
-   - npm run preview
+
 
 Training the LSTM model (train_lstm.py)
 --------------------------------------
