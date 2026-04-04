@@ -181,8 +181,6 @@ graph TD
     F --> G[Frontend Ready!]
 ```
 
-## Backend Setup
-
 ### Setup Flowchart
 ```mermaid
 flowchart TD
@@ -256,4 +254,12 @@ flowchart TD
    - `SECRET_KEY`: your application secret key.
  
 ## Backend Setup 
-In backend Folder (AI stock/backend) terminal : pip install -r requirements.txt
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+ 
+API will be live at `http://localhost:8000`.  
+Interactive docs: `http://localhost:8000/docs`
+ 
