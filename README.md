@@ -162,6 +162,11 @@ Training the LSTM model (train_lstm.py)
 
 
 ## 🎨 Frontend Setup
+```1. Go to AI Stock/ai-stock-predictor/frontend
+   2. Install:
+   - npm install
+   - npm install axios recharts lucide-react
+- npm run dev
 ```
 ### Frontend Status Badges
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)
@@ -262,4 +267,26 @@ uvicorn main:app --reload --port 8000
  
 API will be live at `http://localhost:8000`.  
 Interactive docs: `http://localhost:8000/docs`
- 
+
+## Integrated LLM — Google Gemini
+```
+What it is
+The system uses Google Gemini (google-generativeai Python SDK) as its large language model to generate a human-readable, two-sentence executive summary of the current market sentiment for any requested ticker.
+Why Gemini
+FeatureDetailModelgemini-pro (or gemini-1.5-flash for faster responses)SDKgoogle-generativeai Python packageAuthAPI key via GEMINI_API_KEY environment variableInput5 live news headlines fetched from NewsAPI for the tickerOutputConcise 2-sentence analyst-style narrative
+```
+End-to-End Prediction Flow
+```
+GET /predict/AAPL
+      │
+      ├─ 1. yfinance → fetch 7-day price history (chart) + 60-day history (LSTM input)
+      │
+      ├─ 2. NewsAPI  → fetch 5 latest headlines for "AAPL stock"
+      │
+      ├─ 3. FinBERT  → score each headline → aggregate → Positive / Negative + confidence
+      │
+      ├─ 4. LSTM     → scale 60-day closes → predict next price → inverse-scale
+      │
+      ├─ 5. LLM      → craft prompt from headlines → generate 2-sentence analyst summary
+      │
+      └─ 6. Return unified JSON → React renders chart, sentiment badge, AI summary card
