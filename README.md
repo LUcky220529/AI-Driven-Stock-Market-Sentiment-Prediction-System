@@ -255,3 +255,6 @@ flowchart TD
 - Set the following environment variables:
    - `DATABASE_URL`: your database connection string
    - `SECRET_KEY`: your application secret key.
+ 
+## Backend Setup 
+In backend Folder (AI stock/backend) terminal : pip install -r requirements.txt
