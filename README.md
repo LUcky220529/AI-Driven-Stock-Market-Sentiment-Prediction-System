@@ -294,30 +294,30 @@ GET /predict/AAPL
 ```
 
 
-##🚀 Deployment
+## 🚀 Deployment
 
 This project follows a hybrid deployment architecture to efficiently handle frontend performance and heavy backend ML processing.
 
-##🌐 Live Application
+## 🌐 Live Application
 	•	Frontend (Vercel): https://your-vercel-link.vercel.app
 	•	Backend API: Exposed via ngrok (temporary public URL)
 
 ⸻
 
-##🧠 Deployment Architecture
+## 🧠 Deployment Architecture
 	•	The frontend is deployed on Vercel for fast and scalable UI delivery.
 	•	The backend, which includes heavy TensorFlow-based ML models, runs locally due to high computational requirements.
 	•	ngrok is used to expose the local backend server to the internet.
 
 ⸻
 
-###🔄 How It Works
+### 🔄 How It Works
 	1.	User interacts with the frontend hosted on Vercel
 	2.	Frontend sends API requests to the ngrok public URL
 	3.	ngrok tunnels the request to the local backend server
 	4.	Backend processes ML logic and returns the response
 
-###⚠️ Important Notes
+### ⚠️ Important Notes
 	•	ngrok URLs are temporary and change every time the tunnel restarts
 	•	This setup is ideal for development and demonstration purposes
 	•	For production, consider deploying backend on GPU-supported platforms like:
@@ -327,7 +327,7 @@ This project follows a hybrid deployment architecture to efficiently handle fron
 
 ⸻
 
-##☁️ Tech Stack
+## ☁️ Tech Stack
 	•	Frontend: React.js (Vercel)
 	•	Backend: FastAPI (Python)
 	•	ML: TensorFlow
