@@ -91,7 +91,7 @@ NEWS_API_KEY=your_api_key_here
 
 # MongoDB (Optional: Only needed if you are using cloud caching)
 MONGO_URI=your_mongodb_connection_string
-
+GEMINI_API_KEY = your google gemini api key
 Prerequisites
 -------------
 - Python 3.9+ (3.10 recommended)
