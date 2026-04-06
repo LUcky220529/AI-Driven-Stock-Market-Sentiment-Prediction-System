@@ -379,5 +379,13 @@ This project follows a hybrid deployment architecture to efficiently handle fron
 	•	Tunneling: ngrok
 	•	Version Control: GitHub
 
+⸻
+	
+##⚠️ Legal Disclaimer 
+	
+	## Overview 
+	This document outlines the terms, limitations, and disclaimers associated with the **AI-Driven Stock Market Sentiment & Prediction System** ("System"). By 
+	using this System, you acknowledge and accept all terms and conditions outlined below.
+
 
 
