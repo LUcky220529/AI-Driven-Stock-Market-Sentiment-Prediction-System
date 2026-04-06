@@ -387,5 +387,19 @@ This project follows a hybrid deployment architecture to efficiently handle fron
 	This document outlines the terms, limitations, and disclaimers associated with the **AI-Driven Stock Market Sentiment & Prediction System** ("System"). By 
 	using this System, you acknowledge and accept all terms and conditions outlined below.
 
+⸻
+
+## Summary 
+| Aspect | Statement | \
+| **Financial Advice** \
+| ❌ Not provided; consult a licensed advisor | \
+| **Accuracy Guarantee** \
+| ❌ No guarantee; probabilistic estimates only | \
+| **Liability** \
+| ❌ Developers not liable for losses | 
+
+| **Best Practices** | \
+✅ Use as supplementary tool only, verify independently |
+
 
 
