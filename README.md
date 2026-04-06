@@ -299,8 +299,8 @@ GET /predict/AAPL
 This project follows a hybrid deployment architecture to efficiently handle frontend performance and heavy backend ML processing.
 
 ## 🌐 Live Application
-	•	Frontend (Vercel): https://your-vercel-link.vercel.app
-	•	Backend API: Exposed via ngrok (temporary public URL)
+	•	Frontend (Vercel): ai-driven-stock-market-sentiment-pr.vercel.app
+	•	Backend API: Exposed via ngrok (temporary public URL changes everytime)
 
 ⸻
 
