@@ -198,13 +198,7 @@ flowchart TD
     D --> E
 ```
 
-### OS-Specific Setup Comparison Table
-| Feature               | macOS/Linux                        | Windows   
-     |
-|-----------------------|------------------------------------|-----------------------------------|
-| Python Installation    | `brew install python`             | `choco install python`            |
-| Virtualenv Setup      | `python3 -m venv venv`           | `python -m venv venv`           |
-| Run Backend           | `python app.py`                   | `python app.py`                 |
+
 ### Step-by-Step Setup
 
 <details>
