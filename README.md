@@ -270,6 +270,48 @@ uvicorn main:app --reload --port 8000
 API will be live at `http://localhost:8000`.  
 Interactive docs: `http://localhost:8000/docs`
 
+```
+## Integrated LLM Documentation
+
+### FinBERT
+
+FinBERT is a pre-trained transformer model specifically designed for financial sentiment analysis. In our project, FinBERT is utilized to process and analyze news articles, financial reports, and social media content to extract sentiment related to specific stocks and the overall market. 
+
+#### Use Cases:
+- **Market Sentiment Analysis:** Analyze tweets and news articles to gauge public sentiment towards stocks.
+- **Financial Report Evaluation:** Assess sentiment in quarterly earnings reports to provide insights into company performance.
+
+#### Architecture:
+FinBERT's architecture is based on the BERT model, fine-tuned on a financial corpus. Key components include:
+- **Input Encoding:** Custom tokenizers that preprocess financial text data.
+- **Multi-class Classification:** Enables the prediction of positive, negative, and neutral sentiments.
+
+#### Integration:
+In this project, FinBERT is integrated via the Hugging Face Transformers library, allowing seamless model loading and sentiment extraction within our data processing pipeline.
+
+### Google Gemini
+
+Google Gemini is an advanced language model that supports a wide range of tasks, including text generation, translation, and summarization. In our application, it plays a critical role in generating context-sensitive insights from financial news and reports.
+
+#### Use Cases:
+- **Automated Insights Generation:** Automatically generate summaries of financial news articles.
+- **Contextual Analysis:** Provide detailed analysis based on previous trends and current news events to aid trading strategies.
+
+#### Architecture:
+Google Gemini utilizes a multi-modal architecture that processes various data sources, enabling it to leverage visual as well as textual information. This results in enhanced understanding and prediction capabilities in financial contexts.
+
+#### Integration:
+Integration of Google Gemini is achieved through API calls that allow real-time data processing, enhancing responsiveness and accuracy in sentiment-based predictions.
+
+### Next Steps
+With the integration of FinBERT and Google Gemini, our next goal is to further enhance the accuracy of sentiment predictions by:
+- Exploring additional financial data sources for diverse input.
+- Implementing continuous learning mechanisms to adapt models to evolving market trends.
+- Regularly updating the LLMs with new financial information to maintain relevance and accuracy in predictions.
+
+This structured LLM documentation will ensure a comprehensive understanding of how these models are leveraged for improved sentiment analysis in stock market predictions.
+```
+
 ## Integrated LLM — Google Gemini
 ```
 What it is
