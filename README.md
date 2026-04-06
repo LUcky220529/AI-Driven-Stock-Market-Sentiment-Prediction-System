@@ -45,8 +45,9 @@ This flowchart illustrates the complete lifecycle of a single user request, demo
 
 * **1. User Trigger:** The cycle begins when a user enters a stock ticker (e.g., `AAPL`) into the React.js dashboard.
 * **2. Concurrent Data Ingestion:** The FastAPI orchestrator simultaneously fetches numerical historical data (via `yfinance`) and qualitative live news headlines (via `NewsAPI`).
-* **3. Dual AI Processing:** * *Text Data* is routed to the **FinBERT** transformer model to calculate a market sentiment score.
+* **3. Triple AI Processing:** * *Text Data* is routed to the **FinBERT** transformer model to calculate a market sentiment score.
   * *Numerical Data* is routed to the custom **LSTM** neural network to forecast the 61st-day price.
+  * *Text Data* *Numerical Data* is routed to the **LLM** a gemini model is integrated o summarize the prediction.
 * **4. Unified Aggregation:** The backend combines the outputs from both AI models into a single, clean JSON payload.
 * **5. UI Visualization:** The React frontend receives the JSON and dynamically updates the Recharts graphs and sentiment cards in real-time.
 
