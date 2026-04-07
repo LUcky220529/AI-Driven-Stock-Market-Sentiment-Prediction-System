@@ -243,7 +243,31 @@ graph TD
     N --> O[Update React Dashboard]
 ```
 
+### LLM Flowchart (Google Gemini)
 
+```mermaid
+graph TD
+    A[Backend Requests LLM Summary] --> B[Gather AI Engine Outputs]
+    
+    subgraph "Data Aggregation"
+    B --> C[Sentiment Data: 5 Latest Headlines + FinBERT Score]
+    B --> D[Quant Data: 60-Day History + 7-Day LSTM Prediction]
+    end
+    
+    C --> E[Construct Prompt Context]
+    D --> E
+    
+    E --> F[API Call to Google Gemini]
+    
+    subgraph "Gemini Processing"
+    F --> G[Analyze Financial Context]
+    G --> H[Synthesize Narrative]
+    H --> I[Format as 2-Sentence Analyst Summary]
+    end
+    
+    I --> J[Return Text to Backend Orchestrator]
+    J --> K[Append to Final JSON Payload]
+```
 
 ### Step-by-Step Setup
 
