@@ -18,16 +18,15 @@ from passlib.context import CryptContext
 import certifi 
 import google.generativeai as genai # NEW: Google Gemini API
 
-os.environ['SSL_CERT_FILE'] = certifi.where()
+os.environ['SSL_CERT_FILE'] = certifi.where()   # for mongoDB connection 
 
 load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")     # API key of Google gemini 
 
-# --- NEW: CONFIGURE GEMINI LLM ---
-if GEMINI_API_KEY:
+if GEMINI_API_KEY:            #adding LLM integration
     genai.configure(api_key=GEMINI_API_KEY)
-    llm_model = genai.GenerativeModel('gemini-2.5-flash')
+    llm_model = genai.GenerativeModel('gemini-2.5-flash')    #gemini model
 else:
     print("⚠️ WARNING: GEMINI_API_KEY not found in .env file!")
 
@@ -35,7 +34,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"], 
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],  #backed and forntend url
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -52,11 +51,11 @@ def get_password_hash(password):
 NEWS_API_KEY = "" # you live news API from NEWS API org.
 
 print("Loading FinBERT Model...")
-sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")
+sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")     #finBERT NLP
 
 print("Loading LSTM Model and Scaler...")
 try:
-    lstm_model = tf.keras.models.load_model('lstm_model.h5')
+    lstm_model = tf.keras.models.load_model('lstm_model.h5')         
     scaler = joblib.load('scaler.gz')
     print("✅ AI Models Loaded Successfully!")
 except Exception as e:
@@ -97,7 +96,7 @@ class AuthRequest(BaseModel):
 @app.on_event("startup")
 async def startup_db_client():
     if MONGODB_URI:
-        # Using the exact certifi method that worked for your Mac earlier
+        # Using the exact certifi method 
         client = AsyncIOMotorClient(MONGODB_URI, tlsCAFile=certifi.where())
         await init_beanie(database=client.FarmStockApp, document_models=[StockPredictionRecord, UserAccount])
         print("✅ Successfully connected to MongoDB Atlas!")
@@ -177,8 +176,8 @@ async def predict_stock(ticker: str):
     except Exception as e:
         return {"error": str(e)}
 
-@app.post("/api/stocks/save")
-async def save_prediction(record: StockPredictionRecord):
+@app.post("/api/stocks/save")       
+async def save_prediction(record: StockPredictionRecord):       #MongoDB Connection setup !!
     try:
         await record.insert()
         return {"message": "Saved to database successfully!", "id": str(record.id)}
