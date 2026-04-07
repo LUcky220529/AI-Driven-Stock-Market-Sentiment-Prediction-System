@@ -1,4 +1,4 @@
-# 📈 AI-Driven Stock Market Sentiment & Prediction System
+# 📈 AI-Driven Stock Market Sentiment & Prediction System:NeuroTrade AI
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
