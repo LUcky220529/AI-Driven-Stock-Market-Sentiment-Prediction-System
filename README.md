@@ -185,16 +185,33 @@ Training the LSTM model (train_lstm.py)
 ![React](https://img.shields.io/badge/React-18.x-61DAFB.svg)
 ```
 ```
-### Frontend Setup Flowchart
+
+### Frontend Flowchart
+
 ```mermaid
 graph TD
-    A[Start Frontend Setup] --> B[Navigate to frontend folder]
-    B --> C[Run npm install]
-    C --> D[npm run dev]
-    D --> E[✓ Dev Server Running on Port 5173]
-    E --> F[Open http://localhost:5173]
-    F --> G[Frontend Ready!]
+    A[User Opens Dashboard] --> B[Enter Stock Ticker e.g., AAPL]
+    B --> C[Trigger Search]
+    
+    C --> D[Show Loading State UI]
+    C --> E[Axios GET: /predict/AAPL]
+    
+    E --> F{Wait for Backend Response}
+    
+    F -- Success --> G[Parse JSON Data]
+    F -- Error --> H[Display Error Message]
+    
+    subgraph "Dynamic UI Rendering"
+    G --> I[Update Recharts: Candlestick/Line Graph]
+    G --> J[Update Sentiment Gauge: Pos/Neg/Neu]
+    G --> K[Render Gemini LLM Summary Card]
+    end
+    
+    I --> L[Dashboard Fully Loaded]
+    J --> L
+    K --> L
 ```
+
 ### Backend Flowchart
 
 ```mermaid
