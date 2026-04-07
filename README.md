@@ -14,7 +14,11 @@
 For retail investors and students, analyzing the stock market is overwhelming. You have to look at complex candlestick charts on one platform (Technical Analysis) and read hundreds of news articles on another platform (Fundamental/Sentiment Analysis). 
 
 This project solves that problem by building a **"Hybrid AI Brain"**.
-It automatically fetches the historical data and real-time news, runs them through two separate AI models simultaneously, and presents a simplified **Prediction & Sentiment Score** on a clean and interactive dashboard.
+It automatically fetches historical data and real-time news, runs them through two separate AI models simultaneously, and presents a simplified **Prediction & Sentiment Score** on a clean and interactive dashboard.
+
+**Why this project matters:**
+* **Democratizing Institutional Tools:** Wall Street has used quantitative models and sentiment algorithms for years. This system levels the playing field by putting powerful, enterprise-grade AI analysis directly into the hands of everyday retail investors.
+* **Actionable Clarity over Raw Data:** Instead of forcing users to interpret raw numbers or generic data flags, the system leverages an LLM (Google Gemini) to translate complex technical and sentiment metrics into clear, human-readable, actionable summaries.
 
 ### ✨ Key Features
 * **🧠 Dual-AI Analysis:** * **The Quant Engine (LSTM):** A Long Short-Term Memory neural network that looks at the last 5 years of price history to predict the trend for the next 7 days.
