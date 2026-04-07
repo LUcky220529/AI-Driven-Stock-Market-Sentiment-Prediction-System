@@ -22,7 +22,11 @@ It automatically fetches the historical data and real-time news, runs them throu
 * **⚡ Blazing Fast API:** Built with FastAPI, the backend processes heavy AI inference tasks asynchronously, delivering results in under 3 seconds.
 * **📊 Interactive Dashboard:** A React.js frontend featuring beautiful Recharts (Candlestick and Line graphs) and a dynamic Sentiment Gauge.
 * **🗄️ Smart Caching:** Uses MongoDB to cache recent searches, preventing API rate limits and instantly loading popular stock queries.
-
+* **⚖️ Holistic Market View:** By cross-referencing technical price action with qualitative news sentiment, the system effectively filters out market noise and reduces false trading signals.
+* **🤖 Smart LLM Summaries:** Uses the Gemini LLM to synthesize the complex data from both engines into a clear, human-readable summary for retail investors.
+* **🛠️ Developer-Ready:** Includes built-in, auto-generated Swagger UI documentation for seamless API testing and third-party integration.
+* **📱 Responsive UI/UX:** A mobile-friendly design that democratizes complex algorithmic trading data, making it intuitive for non-technical users on any device.
+* **📉 Cost & Resource Efficient:** Dramatically reduces redundant calls to external data providers (like `yfinance` and NewsAPI), saving bandwidth and ensuring high availability.
 
 ## 🧠 Architecture & Tech Stack
 This project leverages a modern, decoupled architecture:
