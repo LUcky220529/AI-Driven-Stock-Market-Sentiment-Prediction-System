@@ -195,16 +195,37 @@ graph TD
     E --> F[Open http://localhost:5173]
     F --> G[Frontend Ready!]
 ```
+### Backend Flowchart
 
-### Setup Flowchart
 ```mermaid
-flowchart TD
-    A[Start] --> B{Is OS Linux or macOS?} 
-    B -- Yes --> C[Follow macOS/Linux Setup]
-    B -- No --> D[Follow Windows Setup]
-    C --> E[Setup Complete]
-    D --> E
+graph TD
+    A[User Request: /predict/ticker] --> B{Check MongoDB Cache}
+    
+    B -- Cache Found --> C[Return Cached JSON]
+    B -- Cache Miss --> D[Parallel Data Fetching]
+    
+    subgraph "Data Acquisition"
+    D --> E[yfinance: Historical Prices]
+    D --> F[NewsAPI: Financial Headlines]
+    end
+    
+    subgraph "AI Processing"
+    E --> G[Quant Engine: LSTM Model]
+    F --> H[Sentiment Engine: FinBERT]
+    G --> I[7-Day Price Prediction]
+    H --> J[Sentiment Score: Pos/Neg/Neu]
+    end
+    
+    I --> K[Gemini LLM Synthesis]
+    J --> K
+    
+    K --> L[Generate Human-Readable Summary]
+    L --> M[Store Result in MongoDB]
+    M --> N[Return Final JSON Response]
+    C --> N
+    N --> O[Update React Dashboard]
 ```
+
 
 
 ### Step-by-Step Setup
