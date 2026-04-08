@@ -20,7 +20,6 @@ It automatically fetches historical data and real-time news, runs them through t
 * **Democratizing Institutional Tools:** Wall Street has used quantitative models and sentiment algorithms for years. This system levels the playing field by putting powerful, enterprise-grade AI analysis directly into the hands of everyday retail investors.
 * **Actionable Clarity over Raw Data:** Instead of forcing users to interpret raw numbers or generic data flags, the system leverages an LLM (Google Gemini) to translate complex technical and sentiment metrics into clear, human-readable, actionable summaries.
 * **Holistic Market Synthesis (Technical + Fundamental):** Most retail trading apps force users to look at price charts in one tab and read news in another. NeuroTrade merges both disciplines. It mathematically evaluates historical price action via the LSTM model (Technical Analysis) while simultaneously reading and scoring live global news via FinBERT (Fundamental Analysis), mimicking the multi-layered strategy of a real quantitative analyst.
-* 
 
 ### ✨ Key Features
 * **🧠 Dual-AI Analysis:** * **The Quant Engine (LSTM):** A Long Short-Term Memory neural network that looks at the last 5 years of price history to predict the trend for the next 7 days.
