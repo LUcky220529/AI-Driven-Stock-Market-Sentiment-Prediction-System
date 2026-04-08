@@ -246,43 +246,31 @@ graph TD
 ### LLM Flowchart (Google Gemini)
 
 ```mermaid
+
 graph TD
-    A[User Request: /predict/ticker] --> B{Check MongoDB Cache}
-    B -- Cache Found --> C[Return Cached JSON]
-    B -- Cache Miss --> D[Parallel Data Fetching]
-
     subgraph "Data Acquisition"
-    D --> E[yfinance: Historical Prices]
-    D --> F[NewsAPI: Financial Headlines]
+        A[NewsAPI: Financial Headlines]
     end
 
-    subgraph "AI Processing Engines"
-    E --> G[Quant Engine: LSTM Model]
-    F --> H[Sentiment Engine: FinBERT]
+    subgraph "AI Sentiment Engine"
+        A --> B[FinBERT Transformer Model]
+        B --> C[Sentiment Score: Pos/Neg/Neu]
     end
 
-    subgraph "Independent Outputs"
-    G --> I[7-Day Price Prediction]
-    H --> J[Sentiment Score: Pos/Neg/Neu]
+    subgraph "LLM Narrative Synthesis (Google Gemini)"
+        A --> D[Construct Gemini Prompt]
+        C --> D
+        D --> E[Gemini-1.5-Flash Processing]
+        E --> F[Generate 2-Sentence Analyst Summary]
     end
 
-    subgraph "LLM Narrative Synthesis"
-    F -.-> K[Gemini LLM Summary]
-    H -.-> K
-    K --> L[Generate 2-Sentence Sentiment Narrative]
+    subgraph "Final Output"
+        F --> G[Update React Dashboard Summary Card]
     end
 
-    I --> M[Unified JSON Aggregator]
-    J --> M
-    L --> M
-
-    M --> N[Store Result in MongoDB]
-    M --> O[Return Final JSON Response]
-    O --> P[Update React Dashboard]
-
-    style K fill:#f96,stroke:#333,stroke-width:2px
-    style G fill:#bbf,stroke:#333
-    style H fill:#bbf,stroke:#333
+    style E fill:#f96,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333
+    style A fill:#dfd,stroke:#333
    
 ```
 
