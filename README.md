@@ -248,29 +248,39 @@ graph TD
 ```mermaid
 
 graph TD
+    %% Node Definitions
+    A[NewsAPI: Financial Headlines]
+    B[FinBERT Transformer Model]
+    C[Sentiment Score: Pos/Neg/Neu]
+    D[Construct Gemini Prompt]
+    E[Gemini-1.5-Flash Processing]
+    F[Generate 2-Sentence Analyst Summary]
+    G[Update React Dashboard Summary Card]
+
+    %% Data Flow
     subgraph "Data Acquisition"
-        A[NewsAPI: Financial Headlines]
+        A
     end
 
     subgraph "AI Sentiment Engine"
-        A --> B[FinBERT Transformer Model]
-        B --> C[Sentiment Score: Pos/Neg/Neu]
+        A --> B
+        B --> C
     end
 
-    subgraph "LLM Narrative Synthesis (Google Gemini)"
-        A --> D[Construct Gemini Prompt]
+    subgraph "LLM Narrative Synthesis"
+        A --> D
         C --> D
-        D --> E[Gemini-1.5-Flash Processing]
-        E --> F[Generate 2-Sentence Analyst Summary]
+        D --> E
+        E --> F
     end
 
     subgraph "Final Output"
-        F --> G[Update React Dashboard Summary Card]
+        F --> G
     end
 
-    style E fill:#f96,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333
-    style A fill:#dfd,stroke:#333
+    %% Black Theme Styling
+    classDef blackBox fill:#000000,stroke:#333,stroke-width:2px,color:#ffffff;
+    class A,B,C,D,E,F,G blackBox;
    
 ```
 
