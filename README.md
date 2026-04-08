@@ -248,6 +248,13 @@ graph TD
     C --> N
     N --> O[Update React Dashboard]
 ```
+### LLM Status Badges
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Natural Language Processing](https://img.shields.io/badge/NLP-Blue?style=for-the-badge)
+
 
 ### LLM Flowchart (Google Gemini)
 
