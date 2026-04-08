@@ -247,26 +247,43 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Backend Requests LLM Summary] --> B[Gather AI Engine Outputs]
-    
-    subgraph "Data Aggregation"
-    B --> C[Sentiment Data: 5 Latest Headlines + FinBERT Score]
-    B --> D[Quant Data: 60-Day History + 7-Day LSTM Prediction]
+    A[User Request: /predict/ticker] --> B{Check MongoDB Cache}
+    B -- Cache Found --> C[Return Cached JSON]
+    B -- Cache Miss --> D[Parallel Data Fetching]
+
+    subgraph "Data Acquisition"
+    D --> E[yfinance: Historical Prices]
+    D --> F[NewsAPI: Financial Headlines]
     end
-    
-    C --> E[Construct Prompt Context]
-    D --> E
-    
-    E --> F[API Call to Google Gemini]
-    
-    subgraph "Gemini Processing"
-    F --> G[Analyze Financial Context]
-    G --> H[Synthesize Narrative]
-    H --> I[Format as 2-Sentence Analyst Summary]
+
+    subgraph "AI Processing Engines"
+    E --> G[Quant Engine: LSTM Model]
+    F --> H[Sentiment Engine: FinBERT]
     end
-    
-    I --> J[Return Text to Backend Orchestrator]
-    J --> K[Append to Final JSON Payload]
+
+    subgraph "Independent Outputs"
+    G --> I[7-Day Price Prediction]
+    H --> J[Sentiment Score: Pos/Neg/Neu]
+    end
+
+    subgraph "LLM Narrative Synthesis"
+    F -.-> K[Gemini LLM Summary]
+    H -.-> K
+    K --> L[Generate 2-Sentence Sentiment Narrative]
+    end
+
+    I --> M[Unified JSON Aggregator]
+    J --> M
+    L --> M
+
+    M --> N[Store Result in MongoDB]
+    M --> O[Return Final JSON Response]
+    O --> P[Update React Dashboard]
+
+    style K fill:#f96,stroke:#333,stroke-width:2px
+    style G fill:#bbf,stroke:#333
+    style H fill:#bbf,stroke:#333
+   
 ```
 
 ### Step-by-Step Setup
