@@ -353,17 +353,23 @@ graph TD
    - `DATABASE_URL`: your database connection string
    - `SECRET_KEY`: your application secret key.
  
-## Backend Setup 
+## Backend Setup(FastAPI + ML)
 ```bash
 cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+
+# Start the server
+python -m uvicorn main:app --reload
 ```
  
 API will be live at `http://localhost:8000`.  
 Interactive docs: `http://localhost:8000/docs`
 
 ```
+
+##
 ## Integrated LLM Documentation
 
 ### FinBERT
