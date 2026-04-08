@@ -101,9 +101,9 @@ const App = () => {
     }
   }, [activeUser]);
 
-  // ==========================================
+  
   // RENDER 1: LOGIN/REGISTER SCREEN
-  // ==========================================
+  
   if (!activeUser) {
     return (
       <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white p-4">
@@ -160,9 +160,9 @@ const App = () => {
     );
   }
 
-  // ==========================================
+  
   // RENDER 2: THE MAIN DASHBOARD
-  // ==========================================
+  
   return (
     <div className="min-h-screen bg-gray-900 text-white font-sans selection:bg-blue-500 selection:text-white">
       
@@ -352,7 +352,7 @@ const App = () => {
       <footer className="border-t border-gray-800 bg-gray-900/50 backdrop-blur-md mt-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
           <p className="text-gray-400 text-sm">
-            NOTICE: Not Financial Advice.<br></br> Do not Trade based on these Predictions & Sentiments.<br></br>This tool is Group Project(Educational Purpose).
+            NOTICE: Not Financial Advice.<br></br> Do not Trade based on these Predictions , Sentiments & Summarization.<br></br>This tool is Group Project(Educational Purpose).
           </p>
         </div>
       </footer>
