@@ -18,29 +18,29 @@ from passlib.context import CryptContext
 import certifi 
 import google.generativeai as genai # NEW: Google Gemini API
 
-os.environ['SSL_CERT_FILE'] = certifi.where()   # for mongoDB connection 
+os.environ['SSL_CERT_FILE'] = certifi.where()   # for MongoDB connection 
 
 load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")     # API key of Google gemini 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")     # API key of Google Gemini 
 
 if GEMINI_API_KEY:            #adding LLM integration
     genai.configure(api_key=GEMINI_API_KEY)
-    llm_model = genai.GenerativeModel('gemini-2.5-flash')    #gemini model
+    llm_model = genai.GenerativeModel('gemini-2.5-flash')    #gemini model we use in the project
 else:
     print("⚠️ WARNING: GEMINI_API_KEY not found in .env file!")
 
-app = FastAPI()
+app = FastAPI()        #FastAPI backend framework
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  #backed and forntend url
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],  #backend and frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")     #authentication model
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -48,7 +48,7 @@ def verify_password(plain_password, hashed_password):
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-NEWS_API_KEY = "" # you live news API from NEWS API org.
+NEWS_API_KEY = "" # your live news API from NEWS API org.
 
 print("Loading FinBERT Model...")
 sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")     #finBERT NLP
@@ -92,11 +92,11 @@ class AuthRequest(BaseModel):
     username: str
     password: str
 
-# --- 4. STARTUP DB CONNECTION ---
+# STARTUP DB CONNECTION 
 @app.on_event("startup")
 async def startup_db_client():
     if MONGODB_URI:
-        # Using the exact certifi method 
+        # Using the certifi method 
         client = AsyncIOMotorClient(MONGODB_URI, tlsCAFile=certifi.where())
         await init_beanie(database=client.FarmStockApp, document_models=[StockPredictionRecord, UserAccount])
         print("✅ Successfully connected to MongoDB Atlas!")
@@ -153,7 +153,7 @@ async def predict_stock(ticker: str):
         predicted_price = scaler.inverse_transform(predicted_scaled_price)
         final_prediction = float(predicted_price[0][0])
 
-        # --- NEW: GENERATE LLM SUMMARY ---
+        # GENERATE LLM SUMMARY 
         ai_summary_text = "AI Summary not available."
         if GEMINI_API_KEY and live_headlines:
             prompt = f"You are an expert financial analyst. Based on these 5 recent news headlines for {ticker}: {live_headlines}. Write a concise, 2-sentence executive summary explaining the current market sentiment and why it might be moving. Be professional."
@@ -171,7 +171,7 @@ async def predict_stock(ticker: str):
             "sentimentScore": round(confidence, 2),
             "chartData": chart_data,
             "headlinesAnalyzed": live_headlines,
-            "ai_summary": ai_summary_text # Sending the summary to React!
+            "ai_summary": ai_summary_text # Sending the summary to React via JSON !
         }
     except Exception as e:
         return {"error": str(e)}
