@@ -165,13 +165,6 @@ Training the LSTM model (train_lstm.py)
   - `scaler.gz` — MinMaxScaler used for scaling close prices
   - `lstm_model.h5` — trained Keras model
 
-## 💻 Next Goal
-### Login Authentication Dashboard 
-* When user enter , it requires authorised credentials from users
-### Use of LLM 
-*  It can read a financial report and write a paragraph explaining exactly why the market reacted the way it did.
-
-
 ## 🎨 Frontend Setup
 ```1. Go to AI Stock/ai-stock-predictor/frontend
    2. Install:
