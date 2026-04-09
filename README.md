@@ -40,7 +40,7 @@ This project leverages a modern, decoupled architecture:
 * **Sentiment Analysis:** FinBERT (pre-trained NLP model for the financial domain).
 * **Backend / API:** FastAPI for serving predictions and reports.
 * **Frontend:** React (for visualizing charts and AI summaries).
-* **LLM:** Gemini model (for summarizing the prediction).
+* **LLM:** Gemini model (for Summarizing News Sentiements and Headlines).
 
 ---
 
