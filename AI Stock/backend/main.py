@@ -55,7 +55,7 @@ sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")   
 
 print("Loading LSTM Model and Scaler...")
 try:
-    lstm_model = tf.keras.models.load_model('lstm_model.h5')         
+    lstm_model = tf.keras.models.load_model('lstm_model.h5')         #initializing LSTM 
     scaler = joblib.load('scaler.gz')
     print("✅ AI Models Loaded Successfully!")
 except Exception as e:
@@ -92,8 +92,7 @@ class AuthRequest(BaseModel):
     username: str
     password: str
 
-# STARTUP DB CONNECTION 
-@app.on_event("startup")
+@app.on_event("startup")                                  # STARTUP DB CONNECTION 
 async def startup_db_client():
     if MONGODB_URI:
         # Using the certifi method 
@@ -101,7 +100,7 @@ async def startup_db_client():
         await init_beanie(database=client.FarmStockApp, document_models=[StockPredictionRecord, UserAccount])
         print("✅ Successfully connected to MongoDB Atlas!")
 
-@app.post("/api/register")
+@app.post("/api/register")                             #setting up account
 async def register_user(request: AuthRequest):
     existing_user = await UserAccount.find_one(UserAccount.username == request.username)
     if existing_user:
@@ -111,7 +110,7 @@ async def register_user(request: AuthRequest):
     await new_user.insert()
     return {"message": "User registered successfully", "username": new_user.username}
 
-@app.post("/api/login")
+@app.post("/api/login")                              #login 
 async def login_user(request: AuthRequest):
     user = await UserAccount.find_one(UserAccount.username == request.username)
     if not user or not verify_password(request.password, user.hashed_password):
@@ -126,9 +125,9 @@ async def predict_stock(ticker: str):
         prices = hist['Close'].tolist()
         dates = hist.index.strftime('%a').tolist()
         chart_data = [{"day": d, "price": round(p, 2)} for d, p in zip(dates, prices)]
-        current_price = chart_data[-1]["price"] if chart_data else 0
+        current_price = chart_data[-1]["price"] if chart_data else 0                #7-days live chart(graph) in frontend for corresponding stock
 
-        url = f"https://newsapi.org/v2/everything?q={ticker} stock&language=en&sortBy=publishedAt&pageSize=5&apiKey={NEWS_API_KEY}"
+        url = f"https://newsapi.org/v2/everything?q={ticker} stock&language=en&sortBy=publishedAt&pageSize=5&apiKey={NEWS_API_KEY}"   #fetching news headline
         news_response = requests.get(url).json()
         
         live_headlines = []
@@ -142,7 +141,7 @@ async def predict_stock(ticker: str):
         pos_score = sum([s['score'] for s in sentiments if s['label'] == 'positive'])
         neg_score = sum([s['score'] for s in sentiments if s['label'] == 'negative'])
         final_sentiment = "Positive" if pos_score >= neg_score else "Negative"
-        confidence = max(pos_score, neg_score) / len(live_headlines) if live_headlines else 0.5
+        confidence = max(pos_score, neg_score) / len(live_headlines) if live_headlines else 0.5     #Confidence Score in sentiments
 
         hist_60 = stock.history(period="60d")
         last_60_days = hist_60['Close'].values.reshape(-1, 1)
@@ -151,14 +150,13 @@ async def predict_stock(ticker: str):
         X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
         predicted_scaled_price = lstm_model.predict(X_test)
         predicted_price = scaler.inverse_transform(predicted_scaled_price)
-        final_prediction = float(predicted_price[0][0])
+        final_prediction = float(predicted_price[0][0])        #predicted value by deep learning method(Tensorflow : LSTM model)
 
-        # GENERATE LLM SUMMARY 
         ai_summary_text = "AI Summary not available."
         if GEMINI_API_KEY and live_headlines:
             prompt = f"You are an expert financial analyst. Based on these 5 recent news headlines for {ticker}: {live_headlines}. Write a concise, 2-sentence executive summary explaining the current market sentiment and why it might be moving. Be professional."
             try:
-                response = llm_model.generate_content(prompt)
+                response = llm_model.generate_content(prompt)                            #GENERATE LLM SUMMARY 
                 ai_summary_text = response.text.replace('\n', ' ').strip()
             except Exception as e:
                 print("LLM Error:", e)
@@ -171,7 +169,7 @@ async def predict_stock(ticker: str):
             "sentimentScore": round(confidence, 2),
             "chartData": chart_data,
             "headlinesAnalyzed": live_headlines,
-            "ai_summary": ai_summary_text # Sending the summary to React via JSON !
+            "ai_summary": ai_summary_text                 # Sending the summary to React via JSON !
         }
     except Exception as e:
         return {"error": str(e)}
@@ -184,7 +182,7 @@ async def save_prediction(record: StockPredictionRecord):       #MongoDB Connect
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
-@app.get("/api/stocks/{user_id}")
+@app.get("/api/stocks/{user_id}")                    # user id & pass from database
 async def get_user_history(user_id: str):
     try:
         history = await StockPredictionRecord.find(StockPredictionRecord.user_id == user_id).sort("-created_at").to_list()
