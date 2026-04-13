@@ -48,6 +48,9 @@ This project leverages a modern, decoupled architecture:
 
 GitHub natively renders the flowchart below. It shows exactly how data flows from the user to the AI models and back.
 
+<img width="826" height="385" alt="Screenshot 2026-04-13 at 1 23 21 PM" src="https://github.com/user-attachments/assets/ce183bcb-af72-44a1-9b88-53af1cffaa78" />
+
+
 ### 📊 System Architecture & Data Flow
 
 This flowchart illustrates the complete lifecycle of a single user request, demonstrating how our hybrid architecture processes concurrent API calls and Machine Learning tasks:
