@@ -297,8 +297,6 @@ graph TD
 
 ### Step-by-Step Setup
 
-<details>
-<summary><strong>macOS/Linux</strong></summary>
 1. Open terminal.
 2. Install Python if not already installed.
 3. Create a virtual environment:
