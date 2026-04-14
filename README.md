@@ -174,7 +174,7 @@ Training the LSTM model (train_lstm.py)
    2. Install:
    - npm install
    - npm install axios recharts lucide-react
-- npm run dev
+   - npm run dev
 ```
 ### Frontend Status Badges
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)
