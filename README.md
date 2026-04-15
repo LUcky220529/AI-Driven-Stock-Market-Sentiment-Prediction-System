@@ -22,7 +22,7 @@ It automatically fetches historical data and real-time news, runs them through t
 * **Holistic Market Synthesis (Technical + Fundamental):** Most retail trading apps force users to look at price charts in one tab and read news in another. NeuroTrade merges both disciplines. It mathematically evaluates historical price action via the LSTM model (Technical Analysis) while simultaneously reading and scoring live global news via FinBERT (Fundamental Analysis), mimicking the multi-layered strategy of a real quantitative analyst.
 
 ### ✨ Key Features
-* **🧠 Dual-AI Analysis:** * **The Quant Engine (LSTM):** A Long Short-Term Memory neural network that looks at the last 10 years of price history to predict the trend for the next day.
+* **🧠 Tri-AI Analysis:** * **The Quant Engine (LSTM):** A Long Short-Term Memory neural network that looks at the last 10 years of price history to predict the trend for the next day.
   * **The Sentiment Engine (FinBERT):** A domain-specific NLP transformer model that reads today's financial headlines and scores the market mood (Positive, Negative, or Neutral).
 * **⚡ Blazing Fast API:** Built with FastAPI, the backend processes heavy AI inference tasks asynchronously, delivering results in under 8 seconds.
 * **📊 Interactive Dashboard:** A React.js frontend featuring beautiful Recharts (Candlestick and Line graphs) and a dynamic Sentiment Gauge.
