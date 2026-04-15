@@ -11,7 +11,7 @@
 
 ## 📖 About The Project
 
-For retail investors and students, analyzing the stock market is overwhelming. You have to look at complex candlestick charts on one platform (Technical Analysis) and read news articles on another platform (Fundamental/Sentiment Analysis). 
+For retail investors , analyzing the stock market is overwhelming. You have to look at complex candlestick charts on one platform (Technical Analysis) and read news articles on another platform (Fundamental/Sentiment Analysis). 
 
 This project solves that problem by building a **"Hybrid AI Brain"**.
 It automatically fetches historical data and real-time news, runs them through two separate AI models simultaneously, and presents a simplified **Prediction & Sentiment Score** on a clean and interactive dashboard.
